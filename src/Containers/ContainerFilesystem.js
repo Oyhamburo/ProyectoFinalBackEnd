@@ -24,11 +24,12 @@ class ContaienrFilesystem {
         try {
             const elements = await this.getAll()
             
-            const id = element.length === 0 ? 1 : element[element.length - 1].id = 1
+            // const id = elements.length === 0 ? 1 : elements[element.length - 1].id = 1
+            const id = elements.length + 1
 
             element.id = id
 
-            element.push(element)
+            elements.push(element)
             await fs.promises.writeFile(
                 this.filePath,
                 JSON.stringify(elements,null,3)
