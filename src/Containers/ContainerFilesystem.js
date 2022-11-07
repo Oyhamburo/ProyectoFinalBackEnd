@@ -20,11 +20,26 @@ class ContaienrFilesystem {
             console.log(error)
         }
     }
+    async getById(id) {
+        try{
+            const file = await fs.promises.readFile(this.filePath,"utf8")
+            const elements = JSON.parse(file)
+            const product = elements.find(element => element.id == id)
+            if (product)
+                return product
+        } catch (error){
+            if ( error.code === "ENOENT"){
+                await fs.promises.writeFile(this.filePath, JSON.stringify([],null,3))
+                return []
+            }
+            console.log(error)
+        }
+    }
     async save( element ){
         try {
             const elements = await this.getAll()
             
-            // const id = elements.length === 0 ? 1 : elements[element.length - 1].id = 1
+            // const id = elements.length === 0 ? 1 : element[element.length - 1].id = 1
             const id = elements.length + 1
 
             element.id = id

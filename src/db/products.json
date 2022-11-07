@@ -16,16 +16,6 @@
       "thumbnail": "./asd",
       "price": 23,
       "stock": 17,
-      "timestamp": "7/11/2022 17:16:15",
-      "id": 2
-   },
-   {
-      "title": "jere",
-      "description": "mias",
-      "code": 23,
-      "thumbnail": "./asd",
-      "price": 23,
-      "stock": 17,
       "timestamp": "7/11/2022 17:16:16",
       "id": 3
    },
@@ -37,38 +27,6 @@
       "price": 23,
       "stock": 17,
       "timestamp": "7/11/2022 17:16:16",
-      "id": 4
-   },
-   {
-      "title": "jere",
-      "description": "mias",
-      "code": 23,
-      "thumbnail": "./asd",
-      "price": 23,
-      "stock": 17,
-      "timestamp": "7/11/2022 17:16:16",
       "id": 5
-   },
-   {
-      "title": "jere",
-      "description": "mias",
-      "code": 23,
-      "thumbnail": "./asd",
-      "price": 23,
-      "stock": 17,
-      "timestamp": "7/11/2022 17:16:16",
-      "id": 7
-   },
-   {
-      "title": "jere",
-      "description": "mias",
-      "timestamp": "7/11/2022 17:17:20",
-      "id": 8
-   },
-   {
-      "title": "jere",
-      "description": "mias",
-      "timestamp": "7/11/2022 17:18:19",
-      "id": 8
    }
 ]
