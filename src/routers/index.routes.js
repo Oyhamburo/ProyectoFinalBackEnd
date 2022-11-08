@@ -1,11 +1,10 @@
-// import { Router } from "express";
+import { Router } from "express";
 export { ProductRouter } from "./Product/products.routes.js";
-// // import {  } from "../controllers/index.controller.js";
+export { CartRouter } from "./Cart/cart.routes.js";
+import { ControllerIndex } from "../controllers/index.controller.js"; 
 
-// const router = Router()
+const router = Router()
 
-// // router.get("/", ControllerIndex.index);
-// router.use("/productos", ProductRouter);
-// // router.use("/carrito", carritoRoute);
+router.get("/", ControllerIndex.index);
 
-// export { router as indexRoute}
+export { router as indexRouter}

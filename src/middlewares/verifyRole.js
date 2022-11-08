@@ -1,9 +1,15 @@
-const IS_ADMIN = true
+const verifyRole = (permissions) => {
 
-const verifyRole = (req, res, next) => {
-    if (!IS_ADMIN) return res.send({ error: "Usuario no autorizado" })
-
-    next()
-}
+    return (req, res, next) => {
+        permissions === true ?
+            next() :
+            res
+            .status(401)
+            .json({
+                error: -1,
+                description: "unauthorized permission"
+            });
+    };
+};
 
 export { verifyRole }
