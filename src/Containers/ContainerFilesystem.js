@@ -35,39 +35,53 @@ class ContaienrFilesystem {
             console.log(error)
         }
     }
-    async save( element ){
+    async save( object ){
         try {
             const elements = await this.getAll()
             
-            // const id = elements.length === 0 ? 1 : element[element.length - 1].id = 1
-            const id = elements.length + 1
+            const productFound = elements.find(
+                ({
+                    title
+                }) => title === object.title
+            );
 
-            element.id = id
-
-            elements.push(element)
-            await fs.promises.writeFile(
-                this.filePath,
-                JSON.stringify(elements,null,3)
-            )
+            if (productFound) {
+                return null;
+            } else {
+                object.id = elements.length + 1;
+                object.timestamp = this.date
+                elements.push(object);
+                const updatedFile = JSON.stringify(elements, null, " ");
+                fs.promises.writeFile(this.filePath, updatedFile);
+                return object;
+            }
         }catch(error){
             console.log(error)
         }
     }
 
 
-    async deleteById(id){
+    async deleteById(idEntered){
         try{
-            const elements = await this.getAll()
+            const dataParsed = await this.getAll()
 
-            const foundElement = elements.find((element) => element.id == id)
+            const leakedID = dataParsed.filter(({
+                id
+            }) => id != idEntered);
+            const idFound = dataParsed.find(({
+                id
+            }) => id == idEntered);
 
-            if(!foundElement) return "Element not found"
-
-            const filterElements = elements.filter((element) => element.id != id)
-            await fs.promises.writeFile(
-                this.filePath,
-                JSON.stringify(filterElements,null,3)
-            )
+            if (idFound) {
+                console.log(
+                    `Se ha eliminado el objeto con id:${idEntered} >> [[${idFound.title}]]`
+                );
+                const updatedFile = JSON.stringify(leakedID, null, " ");
+                fs.promises.writeFile(this.filePath, updatedFile);
+                return idFound;
+            } else {
+                console.log(`No se ha encontrado el objeto con id: ${idEntered}`);
+            }
         }catch(error){
             console.log(error)
         }

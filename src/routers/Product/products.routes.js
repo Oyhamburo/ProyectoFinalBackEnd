@@ -4,7 +4,7 @@ import { verifyRole } from "../../middlewares/verifyRole.js";
 
 const router = Router()
 
-router.get('/', verifyRole(false),ControllerProducts.getAll)
+router.get('/', verifyRole(true),ControllerProducts.getAll)
 router.get('/:id',verifyRole(true), ControllerProducts.getById)
 router.post("/", verifyRole(true),ControllerProducts.post);
 router.put("/:id", verifyRole(true), ControllerProducts.put);
